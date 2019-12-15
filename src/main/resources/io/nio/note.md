@@ -1,0 +1,8 @@
+#第一步创建Selector
+#第二步创建ServerSocketChannel，并绑定监听接口
+#第三步将Channel设置为非阻塞模式
+#第四步将Channel注册到Selector上，监听连接事件
+#第五步循环调用Selector的select方法，检测就绪情况
+#第六步调用selectedKeys方法获取就绪channel集合
+#第七步判断就绪事件种类，调用业务处理方法
+#第八步根据业务需要决定是否再次注册监听事件，重复执行第三步操作
