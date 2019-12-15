@@ -16,4 +16,8 @@
 # 各分支的介绍
 - leetcode：在leetcode的刷题记录由于之前使用的是escplise未配置字符所
 以将使用GBK的.java放在resource文件下（以后再进行重写）
-- 
+- io： 关于javaio流的学习
+- annotation：对于java注解的学习
+- proxy：动态代理，代理模式
+- reflex：对java反射的学习
+- tool：java开发工具快捷键的学习
