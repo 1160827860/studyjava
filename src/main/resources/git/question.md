@@ -6,5 +6,8 @@
 步了结点，所以仅合并之后的修改。
 
 下面做一个实验：见节点图master再合并system分支
+
 ![avatar](https://img-blog.csdnimg.cn/201912151358262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rhcmtfc291bHM=,size_16,color_FFFFFF,t_70)
 
+如图可见解决冲突之后,再用master同步system分支就不会出错了
+![avatar](https://img-blog.csdnimg.cn/20191215140440981.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rhcmtfc291bHM=,size_16,color_FFFFFF,t_70)
