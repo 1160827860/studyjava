@@ -13,11 +13,8 @@
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; |resources|<br/>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;|com.darksouls|<br/>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;|各分支的笔记和感悟|<br/>
-# 各分支的介绍
-- leetcode：在leetcode的刷题记录由于之前使用的是escplise未配置字符所
-以将使用GBK的.java放在resource文件下（以后再进行重写）
-- io： 关于javaio流的学习
-- annotation：对于java注解的学习
-- proxy：动态代理，代理模式
-- reflex：对java反射的学习
-- tool：java开发工具快捷键的学习
+# 本分支的介绍
+关于课程设计和实验内容：
+bank目录下为银行家算法
+memoryscheduling为动态内存分配算法
+process为进程调度算法
