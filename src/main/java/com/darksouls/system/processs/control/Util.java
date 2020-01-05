@@ -1,12 +1,12 @@
 package com.darksouls.system.processs.control;
 
 
-import com.system.processs.computer.cpu;
-import com.system.processs.computer.pcb;
-import com.system.processs.scheduling.FCFS;
-import com.system.processs.scheduling.Level;
-import com.system.processs.scheduling.ProcessScheduling;
-import com.system.processs.scheduling.SJF;
+import com.darksouls.system.processs.computer.cpu;
+import com.darksouls.system.processs.computer.pcb;
+import com.darksouls.system.processs.scheduling.FCFS;
+import com.darksouls.system.processs.scheduling.Level;
+import com.darksouls.system.processs.scheduling.ProcessScheduling;
+import com.darksouls.system.processs.scheduling.SJF;
 
 import java.util.LinkedList;
 import java.util.Scanner;
