@@ -1,8 +1,8 @@
 package com.darksouls.system.processs.scheduling;
 
-import com.system.processs.computer.cpu;
-import com.system.processs.computer.pcb;
-import com.system.processs.control.Util;
+import com.darksouls.system.processs.computer.pcb;
+import com.darksouls.system.processs.computer.cpu;
+import com.darksouls.system.processs.control.Util;
 
 import java.util.LinkedList;
 
