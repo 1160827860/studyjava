@@ -1,10 +1,12 @@
 package com.darksouls.datastructure.my.study.List;
 
+import com.sun.glass.ui.Size;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.text.html.HTMLDocument;
 import java.security.Signature;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -36,7 +38,7 @@ public class test {
    * 反转链表，利用一个额外遍变量实现
    */
   @Test
-  public void test1(){
+  public void test11(){
       int temp;
       for(int i = 0 ,j = a.size - 1;i < a.size/2;i++,j--){
         temp = a.get(i);
@@ -47,10 +49,9 @@ public class test {
   }
   /**
    * 链表反转,采用暴力法
-   * 还有一种应该是利用递归实现
    */
   @Test
-  public void test2(){
+  public void test12(){
     int[] b =new int[a.size];
     for (int i = 0; i < a.size; i++) {
       b[i] = a.get(i);
@@ -60,12 +61,29 @@ public class test {
     }
     System.out.println(a.toString());
   }
+
   /**
-   * 链表检查是否出现循环
-   * 三种方法
+   * 链表反转：利用递归
+   */
+  @Test
+  public void test13(){
+    LinkedList<Integer> c = new LinkedList<>();
+    go(0,a.size,c);
+    System.out.println(c.toString());
+  }
+  public static void go(int n,int size,LinkedList<Integer> c){
+    if(n == size){
+      return;
+    }
+    go(n + 1,size,c);
+    c.add(a.get(n));
+    return;
+  }
+
+  /**
+   * 链表检查是否出现循环（只能检查是否出现重复）
    * 哈希表法,一直读取，出现重复自然size不足
-   *反转指针法，反转指针，不能到头部就说明有循环
-   *
+   *如果是基本类型可能会出现错误,如果是对象就可以用这个方法。
    */
   @Test
   public void test3(){
@@ -76,7 +94,14 @@ public class test {
     HashSet<ListNode> res = new HashSet<>();
     res.add(a);
     res.add(b);
+    res.add(a);
     System.out.println(res.size());
+    int aa= 10;
+    int bb = 10;
+    HashSet<Integer> t = new HashSet<>();
+    t.add(aa);
+    t.add(bb);
+    System.out.println(t.size());
   }
 
   /**
@@ -93,7 +118,7 @@ public class test {
    * 使用hash表去重
    */
   @Test
-  public void test5(){
+  public void test21(){
     HashSet<Integer> b = new HashSet<>();
     for (int i = 0; i < a.size; i++) {
       b.add(a.get(i));
@@ -105,5 +130,57 @@ public class test {
     }
     System.out.println(a.toString());
   }
-  
+
+  /**
+   * 牛客网
+   * 利用搜索的方法来进行去除重复
+   *pre是最后一个不重复的元素
+   * 利用next对后面的元素进行搜索发现一样的对象就删除
+   * 1->2->3->3->4->4->5
+   * 代码写的太罗嗦了
+   */
+  @Test
+  public void test22(){
+    ListNode pHead = new ListNode(1);
+    ListNode t = new ListNode(2);
+    pHead.next = t;
+    t.next  = new ListNode(3);
+    t = t.next;
+    t.next  = new ListNode(3);
+    t = t.next;
+    t.next  = new ListNode(4);
+    t = t.next;
+    t.next  = new ListNode(4);
+    t = t.next;
+    ListNode temp = pHead;
+    ListNode tt = pHead;
+    boolean index = false;
+    ListNode res = null;
+    ListNode p = null;
+    while (temp != null){
+      while (tt != null){
+        if(tt.val == temp.val && !tt.equals(temp)){
+          index = true;
+          break;
+        }
+        tt = tt.next;
+      }
+      if(!index){
+        if(res ==null){
+          res = new ListNode(temp.val);
+        }else if(res.next == null){
+          p = new ListNode(temp.val);
+          res.next = p;
+        }else {
+          p.next = new ListNode(temp.val);
+          p = p.next;
+        }
+      }
+      tt = pHead;
+      index = false;
+      temp = temp.next;
+    }
+  }
+
+
 }

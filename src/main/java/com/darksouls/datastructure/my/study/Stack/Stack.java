@@ -8,61 +8,63 @@ import sun.dc.pr.PRError;
  * 栈的实现可以用一张链表来实现，自然也可以用数组来实现
  * @param <E>
  */
-public class Stack<E> implements Vector<E>{
+        public class Stack<E> implements Vector<E>{
 
-    private LinkedList list = new LinkedList();
+            private LinkedList list = new LinkedList();
 
-    /**
-     * 入栈(入队）
-     */
-    @Override
-    public void push(E e) {
-        list.addLast(e);
-    }
-
-    /**
-     * 出栈（出队）
-     */
-    @Override
-    public E pop() {
-        if(list.getSize() == 0){
-            throw new NullPointerException();
-        }else {
-            try {
-                return (E) list.removeLast();
-            } catch (Exception e) {
-                e.printStackTrace();
+            /**
+             * 入栈(入队）
+             */
+            @Override
+            public void push(E e) {
+                list.addLast(e);
             }
-        }
-        return null;
-    }
 
-    /**
-     * 测空
-     *
-     * @return true 空
-     */
-    @Override
-    public boolean isEmpty() {
-        return list.isEmpty();
-    }
+            /**
+             * 出栈（出队）
+             */
+            @Override
+            public E pop() {
+                if(list.getSize() == 0){
+                    throw new NullPointerException();
+                }else {
+                    try {
+                        return (E) list.removeLast();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }
 
-    /**
-     * 获得栈顶元素
-     *
-     * @return
-     */
-    @Override
-    public E getTop() {
-        return (E) list.get(list.getSize() -1);
-    }
+            /**
+             * 测空
+             *
+             * @return true 空
+             */
+            @Override
+            public boolean isEmpty() {
+                return list.isEmpty();
+            }
 
-    public static void main(String[] args) {
-        int a = 1;
-        int b = a;
-        a = 10;
-        System.out.println(a);
-        System.out.println(b);
+            /**
+             * 获得栈顶元素
+             *
+             * @return
+             */
+            @Override
+            public E getTop() {
+                return (E) list.get(list.getSize() -1);
+            }
+
+            public static void main(String[] args) {
+                int a = 1;
+                int b = a;
+                a = 10;
+                System.out.println(a);
+                System.out.println(b);
+                java.util.Stack d = new java.util.Stack();
+                
     }
 
 }

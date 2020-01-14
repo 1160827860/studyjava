@@ -295,5 +295,6 @@ public class ArrayList<E> implements List<E> {
         public void forEachRemaining(Consumer action) {
 
         }
+
     }
 }
