@@ -4,6 +4,10 @@ import java.lang.annotation.ElementType;
 import java.util.AbstractList;
 import java.util.LinkedList;
 
+/**
+ * 采用了惰性删除
+ * @param <E>
+ */
 public class BinarySearchTree<E extends Comparable<? super E> >implements tree<E> {
     private BinaryNode<E> root = null;
     private static class BinaryNode<E>{
@@ -11,6 +15,14 @@ public class BinarySearchTree<E extends Comparable<? super E> >implements tree<E
         BinaryNode<E> left;
         BinaryNode<E> right;
         int count ;
+
+        public BinaryNode(E element, BinaryNode<E> left, BinaryNode<E> right, int count) {
+            this.element = element;
+            this.left = left;
+            this.right = right;
+            this.count = count;
+        }
+
         public BinaryNode(E element, BinaryNode<E> left, BinaryNode<E> right) {
             this.element = element;
             this.left = left;
@@ -59,12 +71,12 @@ public class BinarySearchTree<E extends Comparable<? super E> >implements tree<E
         return findMin(root);
     }
     private E findMin(BinaryNode<E> e){
-        if(e.left == null && e.count != 0){
+        if(e.left == null && e.count > 0){
             return e.element;
         }else if(e == null) {
             return null;
         }
-        return findMax(e.left);
+        return findMin(e.left);
     }
     /**
      * 找到树中的最大值
@@ -76,7 +88,7 @@ public class BinarySearchTree<E extends Comparable<? super E> >implements tree<E
         return findMax(root);
     }
     private E findMax(BinaryNode<E> e){
-        if(e.right == null && e.count != 0){
+        if(e.right == null && e.count > 0){
             return e.element;
         }else if(e == null) {
             return null;
@@ -94,7 +106,7 @@ public class BinarySearchTree<E extends Comparable<? super E> >implements tree<E
     }
     private BinaryNode<E> insert(E x,BinaryNode<E> t){
         if(t == null){
-            return new BinaryNode<>(x,null,null);
+            return new BinaryNode<>(x,null,null,1);
         }
         int compareResult = x.compareTo(t.element);
         if(compareResult > 0 ){
@@ -144,9 +156,10 @@ public class BinarySearchTree<E extends Comparable<? super E> >implements tree<E
     private void printTree (BinaryNode<E> t){
         if(t != null){
             printTree(t.left);
+            if(t.count > 0){
+                System.out.println(t.element);
+            }
             printTree(t.right);
-            System.out.println(t.element);
-
         }
     }
 
@@ -178,6 +191,8 @@ public class BinarySearchTree<E extends Comparable<? super E> >implements tree<E
         t.insert(6);
         t.insert(2);
         t.insert(3  );
+        System.out.println(t.findMax());
+        System.out.println(t.findMin());
         t.printTree();
     }
 }

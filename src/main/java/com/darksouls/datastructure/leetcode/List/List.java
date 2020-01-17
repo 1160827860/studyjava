@@ -432,6 +432,15 @@ public class List {
         return Integer.parseInt(res.toString(),2);
     }
 
+    /**
+     * 回文链表
+     * @param head 链表的头
+     * @return true 是否为回文链表
+     */
+    @Test
+    public static boolean q234(ListNode head) {
+        return false;
+    }
 
 
 }

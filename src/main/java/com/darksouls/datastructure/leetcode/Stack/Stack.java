@@ -3,6 +3,7 @@ package com.darksouls.datastructure.leetcode.Stack;
 import com.sun.javafx.image.impl.IntArgb;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.sql.ResultSet;
 import java.util.Arrays;
@@ -139,6 +140,29 @@ public class Stack {
             return false;
         }
     }
+
+    /**
+     * 有一堆石头，每块石头的重量都是正整数。
+     *
+     * 每一回合，从中选出两块最重的石头，然后将它们一起粉碎。假设石头的重量分别为 x 和 y，且 x <= y。那么粉碎的可能结果如下：
+     *
+     * 如果 x == y，那么两块石头都会被完全粉碎；
+     * 如果 x != y，那么重量为 x 的石头将会完全粉碎，而重量为 y 的石头新重量为 y-x。
+     * 最后，最多只会剩下一块石头。返回此石头的重量。如果没有石头剩下，就返回 0。
+     * @param stones
+     * @return
+     */
+    @Test
+    public int q1046(int[] stones){
+        int weight = 0;
+        for(int i=0;i<stones.length-1;i++){
+            Arrays.sort(stones);
+            weight = stones[stones.length-1] - stones[stones.length-2];
+            stones[stones.length-2] = 0;
+            stones[stones.length-1] = weight;
+        }
+        return stones[stones.length-1];
+    }
 }
 
 /**
@@ -244,4 +268,57 @@ class MyStack {
  * int param_2 = obj.pop();
  * int param_3 = obj.top();
  * boolean param_4 = obj.empty();
+ */
+
+/**
+ * 设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。
+ * push(x) -- 将元素 x 推入栈中。
+ * pop() -- 删除栈顶的元素。
+ * top() -- 获取栈顶元素。
+ * getMin() -- 检索栈中的最小元素。
+ */
+class MinStack {
+    java.util.Stack<Integer> a ;
+    java.util.Stack<Integer> b;
+    /** initialize your data structure here. */
+    public MinStack() {
+        a = new java.util.Stack<>();
+        b = new java.util.Stack<>();
+    }
+    public void push(int x) {
+        a.push(x);
+        if(b.size() > 0){
+            if(x <= b.peek()){
+                b.push(x);
+            }
+        }else {
+            b.push(x);
+        }
+    }
+
+    public void pop() {
+        if(a.peek() .equals( b.peek())){
+            a.pop();
+            b.pop();
+        }else {
+            a.pop();
+        }
+    }
+
+    public int top() {
+        return a.peek();
+    }
+
+    public int getMin() {
+        return b.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
  */
